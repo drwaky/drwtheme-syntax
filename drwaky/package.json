@@ -1,0 +1,10 @@
+{
+  "name": "DrWaky",
+  "theme": "syntax",
+  "description": "DrW's theme",
+  "repository": "https://github.com/drwaky",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0"
+  }
+}
