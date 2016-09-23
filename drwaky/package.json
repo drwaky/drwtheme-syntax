@@ -1,8 +1,10 @@
 {
   "name": "DrWaky",
   "theme": "syntax",
+  "version": "0.9.5",
+  "private": false,
   "description": "DrW's theme",
-  "repository": "https://github.com/drwaky",
+  "repository": "https://github.com/drwaky/drwtheme",
   "license": "MIT",
   "engines": {
     "atom": ">=0.174.0"
