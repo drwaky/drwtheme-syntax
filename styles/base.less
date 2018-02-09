@@ -63,9 +63,23 @@ atom-text-editor {
   color: rgba(202, 226, 251, 0.24);
 }
 
-.syntax--comment {
-  font-style: italic;
-  color: rgba(247, 70, 255, 1);
+.lines {
+  .line {
+    .syntax--text,
+    .syntax--source {
+      .syntax--comment,
+      .syntax--comment *,
+      .syntax--comment.syntax--double-slash,
+      .syntax--comment.syntax--double-slash *,
+      .syntax--comment.syntax--block,
+      .syntax--comment.syntax--block * {
+        background-color: rgba(86, 45, 86, 0.60);
+        color: rgba(247, 70, 255, 1);
+        font-style: italic;
+        font-weight: normal;
+      }
+    }
+  }
 }
 
 .syntax--constant {
@@ -124,7 +138,7 @@ atom-text-editor {
 
 .syntax--invalid.syntax--illegal {
   color: rgba(253, 95, 241, 1);
-  background-color: rgba(86, 45, 86, 0.75);
+  background-color: rgba(86, 45, 86, 0.60);
 }
 
 .syntax--text .syntax--source {
@@ -155,6 +169,25 @@ atom-text-editor {
     &.syntax--double {
       color: rgba(170, 255, 0, 1);
     }
+
+    &.syntax--template, {
+      color: rgba(170, 255, 0, 1);
+
+      .syntax--embedded {
+        color: rgba(255, 200, 0, 1);
+
+        .syntax--section {
+          color: rgba(240, 255, 0, 1);
+          font-weight: bold;
+        }
+
+        .syntax--numeric {
+          color: rgba(12, 124, 252, 1);
+        }
+      }
+    }
+
+
 
     &.syntax--json:not(punctuation) {
       color: rgba(240, 255, 0, 1);
@@ -228,7 +261,8 @@ atom-text-editor {
     color: rgba(103, 103, 103, 1);
   }
 
-  &.syntax--tag {
+  &.syntax--tag.syntax--html,
+  &.syntax--attribute-with-value {
     font-weight: bold;
     color: rgba(215, 182, 255, 1);
 
@@ -240,7 +274,8 @@ atom-text-editor {
     &.syntax--other.syntax--html,
     &.syntax--any.syntax--html,
     &.syntax--inline.syntax--any,
-    &.syntax--block.syntax--any {
+    &.syntax--block.syntax--any,
+    & .syntax--punctuation.syntax--separator.syntax--key-value.syntax--html {
       font-weight: bold;
       color: rgba(69, 212, 255, 1);
     }
@@ -264,7 +299,8 @@ atom-text-editor {
   color: rgba(140, 80, 200, 1);
 }
 
-.syntax--punctuation.syntax--separator.syntax--dictionary.syntax--key-value {
+.syntax--punctuation.syntax--separator.syntax--dictionary.syntax--key-value,
+.syntax--delimiter.syntax--comma {
   font-weight: bold;
   color: rgba(255, 0, 0, 1);
 }
@@ -389,4 +425,72 @@ atom-text-editor {
 .syntax--entity.syntax--other.syntax--attribute-name {
   font-weight: bold;
   color: rgba(127, 131, 224, 1);
+}
+
+.atom-text-editor .gutter.git-diff-icon .line-number::before {
+  width: 1rem;
+  font-weight: bold;
+  font-size: .5em;
+}
+
+//Languaje atom for Polymer - Binding
+
+.syntax--binding {
+  &.syntax--square {
+    .syntax--begin,
+    .syntax--end {
+      font-weight: bold;
+      color: rgba(41, 73, 255, 1);
+
+      .syntax--string {
+        color: rgba(40, 175, 0, 1);
+        font-weight: bold;
+      }
+    }
+
+    .syntax--variable {
+      font-weight: bold;
+      color: rgba(19, 154, 252, 1);
+    }
+
+    .syntax--function {
+      .syntax--js {
+        font-weight: normal;
+        color: rgba(241, 217, 80, 1);
+      }
+
+      .syntax--round {
+        font-weight: bold;
+        color: rgba(255, 255, 130, 1);
+      }
+    }
+  }
+
+  &.syntax--curly {
+    font-weight: bold;
+    color: rgba(255, 0, 0, 1);
+
+    .syntax--begin,
+    .syntax--end {
+      font-weight: bold;
+      color: rgba(255, 114, 44, 1);
+    }
+
+    .syntax--variable {
+      font-weight: bold;
+      color: rgba(255, 155, 47, 1);
+    }
+
+    .syntax--function {
+      .syntax--js {
+        font-weight: normal;
+        color: rgba(241, 217, 80, 1);
+      }
+
+      .syntax--round {
+        font-weight: bold;
+        color: rgba(255, 255, 130, 1);
+      }
+    }
+  }
 }
