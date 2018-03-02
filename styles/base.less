@@ -90,22 +90,38 @@ atom-text-editor {
   }
 }
 
-.syntax--entity {
-  color: rgba(113, 200, 255, 1);
+.syntax--json {
+  .syntax--entity,
+  .syntax--entity.syntax--function {
+    color: rgba(113, 200, 255, 1);
+  }
 }
 
-.syntax--entity.syntax--name.syntax--tag {
-  font-weight: bold;
-  color: rgba(215, 182, 255, 1);
+.syntax--entity {
+  color: rgba(113, 200, 255, 1);
+
+  &.syntax--name.syntax--tag {
+    font-weight: bold;
+    color: rgba(215, 182, 255, 1);
+  }
+
+  &.syntax--other.syntax--inherited-class {
+    font-style: italic;
+    color: rgba(255, 151, 73, 1);
+  }
+
+  &.syntax--function {
+    color: rgba(241, 217, 80, 1);
+  }
 }
 
 .syntax--keyword {
   color: rgba(225, 8, 69, 1);
-}
 
-.syntax--keyword.syntax--operator {
-  font-weight: bold;
-  color: rgba(255, 20, 0, 1);
+  &.syntax--operator {
+    font-weight: bold;
+    color: rgba(255, 20, 0, 1);
+  }
 }
 
 .syntax--storage.syntax--modifier {
@@ -126,29 +142,26 @@ atom-text-editor {
 
 .syntax--variable {
   color: rgba(89, 138, 252, 1);
+
+  &.syntax--language {
+    color: rgba(240, 132, 36, 1);
+  }
 }
 
-.syntax--variable.syntax--language {
-  color: rgba(240, 132, 36, 1);
-}
+.syntax--invalid {
+  &.syntax--deprecated {
+    color: rgba(253, 95, 241, 1);
+  }
 
-.syntax--invalid.syntax--deprecated {
-  color: rgba(253, 95, 241, 1);
-}
-
-.syntax--invalid.syntax--illegal {
-  color: rgba(253, 95, 241, 1);
-  background-color: rgba(86, 45, 86, 0.60);
+  &.syntax--illegal {
+    color: rgba(253, 95, 241, 1);
+    background-color: rgba(86, 45, 86, 0.60);
+  }
 }
 
 .syntax--text .syntax--source {
   color: rgba(248, 248, 248, 1);
   background-color: rgba(177, 179, 186, 0.03);
-}
-
-.syntax--entity.syntax--other.syntax--inherited-class {
-  font-style: italic;
-  color: rgba(255, 151, 73, 1);
 }
 
 .syntax--string {
@@ -214,10 +227,32 @@ atom-text-editor {
 
 }
 
-.syntax--punctuation.syntax--definition.syntax--string.syntax--begin,
-.syntax--punctuation.syntax--definition.syntax--string.syntax--end {
-  color: rgba(40, 175, 0, 1);
-  font-weight: bold;
+.syntax--punctuation {
+  &.syntax--definition {
+    &.syntax--arguments {
+      &.syntax--bracket {
+        &.syntax--round {
+          font-weight: bold;
+          color: rgba(255, 255, 130, 1);
+        }
+      }
+    }
+
+    &.syntax--string {
+      &.syntax--begin,
+      &.syntax--end {
+        color: rgba(40, 175, 0, 1);
+        font-weight: bold;
+      }
+    }
+
+    &.syntax--tag {
+      &.syntax--html {
+        font-weight: bold;
+        color: rgba(140, 80, 200, 1);
+      }
+    }
+  }
 }
 
 .syntax--value > .syntax--string.syntax--quoted.syntax--json:not(punctuation),
@@ -230,8 +265,6 @@ atom-text-editor {
   color: rgba(40, 175, 0, 1);
   font-weight: bold;
 }
-
-
 
 .syntax--meta {
   &.syntax--preprocessor.syntax--c {
@@ -294,13 +327,10 @@ atom-text-editor {
   color: rgba(237, 240, 230, 1);
 }
 
-.syntax--punctuation.syntax--definition.syntax--tag.syntax--html {
-  font-weight: bold;
-  color: rgba(140, 80, 200, 1);
-}
-
 .syntax--punctuation.syntax--separator.syntax--dictionary.syntax--key-value,
-.syntax--delimiter.syntax--comma {
+.syntax--delimiter.syntax--comma,
+.syntax--delimiter.syntax--period,
+.syntax--punctuation.syntax--terminator {
   font-weight: bold;
   color: rgba(255, 0, 0, 1);
 }
@@ -342,59 +372,61 @@ atom-text-editor {
   color: rgba(143, 157, 106, 1);
 }
 
-.syntax--markup.syntax--deleted {
-  color: rgba(248, 248, 248, 1);
-  background-color: rgba(116, 5, 42, 1);
-}
+.syntax--markup {
+  &.syntax--deleted {
+    color: rgba(248, 248, 248, 1);
+    background-color: rgba(116, 5, 42, 1);
+  }
 
-.syntax--markup.syntax--changed {
-  color: rgba(248, 248, 248, 1);
-  background-color: rgba(169, 106, 6, 1);
-}
+  &.syntax--changed {
+    color: rgba(248, 248, 248, 1);
+    background-color: rgba(169, 106, 6, 1);
+  }
 
-.syntax--markup.syntax--inserted {
-  color: rgba(248, 248, 248, 1);
-  background-color: rgba(0, 138, 65, 1);
-}
+  &.syntax--inserted {
+    color: rgba(248, 248, 248, 1);
+    background-color: rgba(0, 138, 65, 1);
+  }
 
-.syntax--markup.syntax--italic {
-  font-style: italic;
-  color: rgba(233, 192, 98, 1);
-}
+  &.syntax--italic {
+    font-style: italic;
+    color: rgba(233, 192, 98, 1);
+  }
 
-.syntax--markup.syntax--bold {
-  color: rgba(233, 192, 98, 1);
-}
+  &.syntax--bold {
+    color: rgba(233, 192, 98, 1);
+  }
 
-.syntax--markup.syntax--underline {
-  text-decoration: underline;
-  color: rgba(225, 137, 100, 1);
-}
+  &.syntax--underline {
+    text-decoration: underline;
+    color: rgba(225, 137, 100, 1);
+  }
 
-.syntax--markup.syntax--quote {
-  font-style: italic;
-  color: rgba(225, 212, 185, 1);
-  background-color: rgba(254, 224, 156, 0.07);
-}
+  &.syntax--quote {
+    font-style: italic;
+    color: rgba(225, 212, 185, 1);
+    background-color: rgba(254, 224, 156, 0.07);
+  }
 
-.syntax--markup.syntax--heading,
-.syntax--markup.syntax--heading .syntax--entity {
-  color: rgba(254, 220, 197, 1);
-  background-color: rgba(99, 45, 4, 1);
-}
+  &.syntax--heading,
+  &.syntax--heading .syntax--entity {
+    color: rgba(254, 220, 197, 1);
+    background-color: rgba(99, 45, 4, 1);
+  }
 
-.syntax--markup.syntax--list {
-  color: rgba(225, 212, 185, 1);
-}
+  &.syntax--list {
+    color: rgba(225, 212, 185, 1);
+  }
 
-.syntax--markup.syntax--raw {
-  color: rgba(87, 139, 179, 1);
-  background-color: rgba(177, 179, 186, 0.03);
-}
+  &.syntax--raw {
+    color: rgba(87, 139, 179, 1);
+    background-color: rgba(177, 179, 186, 0.03);
+  }
 
-.syntax--markup .syntax--comment {
-  font-style: italic;
-  color: rgba(246, 123, 55, 1);
+  .syntax--comment {
+    font-style: italic;
+    color: rgba(246, 123, 55, 1);
+  }
 }
 
 .syntax--meta.syntax--separator {
@@ -413,13 +445,15 @@ atom-text-editor {
   background-color: rgba(117, 16, 18, 1);
 }
 
-.syntax--keyword.syntax--other {
-  color: rgba(168, 0, 3, 1);
-}
+.syntax--keyword {
+  &.syntax--other {
+    color: rgba(168, 0, 3, 1);
+  }
 
-.syntax--keyword.syntax--control {
-  font-weight: bold;
-  color: rgba(166, 9, 0, 1);
+  &.syntax--control {
+    font-weight: bold;
+    color: rgba(166, 9, 0, 1);
+  }
 }
 
 .syntax--entity.syntax--other.syntax--attribute-name {
