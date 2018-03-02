@@ -85,6 +85,14 @@ atom-text-editor {
 .syntax--constant {
   color: rgba(12, 124, 252, 1);
 
+  &.syntax--numeric {
+    color: rgba(36, 206, 255, 1);
+  }
+
+  &.syntax--boolean {
+    color: rgba(255, 20, 147, 1);
+  }
+
   &.syntax--other.syntax--object.syntax--key.syntax--js .syntax--string.syntax--unquoted {
     color: rgba(240, 255, 0, 1);
   }
@@ -93,12 +101,12 @@ atom-text-editor {
 .syntax--json {
   .syntax--entity,
   .syntax--entity.syntax--function {
-    color: rgba(113, 200, 255, 1);
+    color: rgba(156, 226, 255, 1);
   }
 }
 
 .syntax--entity {
-  color: rgba(113, 200, 255, 1);
+  color: rgba(156, 226, 255, 1);
 
   &.syntax--name.syntax--tag {
     font-weight: bold;
@@ -144,7 +152,7 @@ atom-text-editor {
   color: rgba(89, 138, 252, 1);
 
   &.syntax--language {
-    color: rgba(240, 132, 36, 1);
+    color: rgba(140, 80, 200, 1);
   }
 }
 
@@ -229,7 +237,17 @@ atom-text-editor {
 
 .syntax--punctuation {
   &.syntax--definition {
-    &.syntax--arguments {
+    &.syntax--function {
+      &.syntax--bracket {
+        &.syntax--curly {
+          font-weight: bold;
+          color: rgba(255, 114, 44, 1);
+        }
+      }
+    }
+
+    &.syntax--arguments,
+    &.syntax--parameters {
       &.syntax--bracket {
         &.syntax--round {
           font-weight: bold;
@@ -319,6 +337,24 @@ atom-text-editor {
     font-style: italic;
     color: rgba(248, 248, 248, 1);
     background-color: rgba(0, 24, 79, 1);
+  }
+
+  &.syntax--brace {
+
+    &.syntax--square {
+      font-weight: bold;
+      color: rgba(41, 73, 255, 1);
+    }
+
+    &.syntax--round {
+      font-weight: bold;
+      color: rgba(255, 255, 130, 1);
+    }
+
+    &.syntax--curly {
+      font-weight: bold;
+      color: rgba(255, 114, 44, 1);
+    }
   }
 }
 
@@ -452,7 +488,24 @@ atom-text-editor {
 
   &.syntax--control {
     font-weight: bold;
-    color: rgba(166, 9, 0, 1);
+    color: rgba(153, 0, 0, 1);
+  }
+}
+
+.syntax--storage {
+  &.syntax--type {
+    font-weight: bold;
+    color: rgba(243, 86, 77, 1);
+
+    &.syntax--function {
+      font-weight: bold;
+      color: rgba(177, 153, 6, 1);
+
+      &.syntax--arrow {
+        font-weight: bold;
+        color: rgba(153, 0, 0, 1);
+      }
+    }
   }
 }
 
