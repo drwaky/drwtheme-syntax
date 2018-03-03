@@ -1,7 +1,7 @@
 {
   "name": "DrWTheme",
   "theme": "syntax",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "private": false,
   "description": "DrWaky's syntax theme for Atom",
   "keywords": [
