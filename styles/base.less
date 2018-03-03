@@ -8,14 +8,25 @@ atom-text-editor {
     background-color: @syntax-gutter-background-color;
     color: @syntax-gutter-text-color;
 
-    .line-number.cursor-line {
-      background-color: @syntax-gutter-background-color-selected;
-      color: @syntax-gutter-text-color-selected;
-    }
+    .line-number {
+      &.cursor-line {
+        background-color: @syntax-gutter-background-color-selected;
+        color: @syntax-gutter-text-color-selected;
+      }
 
-    .line-number.cursor-line-no-selection {
-      color: @syntax-gutter-text-color-selected;
+      &.cursor-line-no-selection {
+        color: @syntax-gutter-text-color-selected;
+      }
+
+      &.folded,
+      &:after {
+        color: #969896;
+      }
     }
+  }
+
+  .fold-marker:after {
+    color: #969896;
   }
 
   .wrap-guide {
@@ -32,54 +43,55 @@ atom-text-editor {
 
   .search-results {
 
-    .syntax--marker .region {
-      background-color: transparent;
-      border: @syntax-result-marker-color;
-    }
+    .syntax--marker {
+      .region {
+        background-color: transparent;
+        border: @syntax-result-marker-color;
+      }
 
-    .syntax--marker.current-result .region {
-      border: @syntax-result-marker-color-selected;
+      &.current-result .region {
+        border: @syntax-result-marker-color-selected;
+      }
     }
   }
 
-  .is-focused {
+  .cursor {
+    border-color: @syntax-cursor-color;
+    border-width: 3px;
+  }
 
-    .cursor {
-      border-color: @syntax-cursor-color;
-    }
-
-    .selection .region {
+  .selection {
+    .region {
       background-color: @syntax-selection-color;
     }
+  }
 
-    .line-number.cursor-line-no-selection,
-    .line.cursor-line {
-      background-color: rgba(0, 24, 48, 1);
+  .lines {
+    .line {
+      &.cursor-line {
+        background-color: rgba(0, 24, 48, 1);
+      }
+
+      .syntax--text,
+      .syntax--source {
+        .syntax--comment,
+        .syntax--comment *,
+        .syntax--comment.syntax--double-slash,
+        .syntax--comment.syntax--double-slash *,
+        .syntax--comment.syntax--block,
+        .syntax--comment.syntax--block * {
+          background-color: rgba(86, 45, 86, 0.60);
+          color: rgba(247, 70, 255, 1);
+          font-style: italic;
+          font-weight: normal;
+        }
+      }
     }
   }
 }
 
 .invisibles {
   color: rgba(202, 226, 251, 0.24);
-}
-
-.lines {
-  .line {
-    .syntax--text,
-    .syntax--source {
-      .syntax--comment,
-      .syntax--comment *,
-      .syntax--comment.syntax--double-slash,
-      .syntax--comment.syntax--double-slash *,
-      .syntax--comment.syntax--block,
-      .syntax--comment.syntax--block * {
-        background-color: rgba(86, 45, 86, 0.60);
-        color: rgba(247, 70, 255, 1);
-        font-style: italic;
-        font-weight: normal;
-      }
-    }
-  }
 }
 
 .syntax--constant {
@@ -93,8 +105,18 @@ atom-text-editor {
     color: rgba(255, 20, 147, 1);
   }
 
-  &.syntax--other.syntax--object.syntax--key.syntax--js .syntax--string.syntax--unquoted {
-    color: rgba(240, 255, 0, 1);
+  &.syntax--other {
+    &.syntax--object {
+      &.syntax--key {
+        &.syntax--js {
+          .syntax--string {
+            &.syntax--unquoted {
+              color: rgba(240, 255, 0, 1);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -108,14 +130,18 @@ atom-text-editor {
 .syntax--entity {
   color: rgba(156, 226, 255, 1);
 
-  &.syntax--name.syntax--tag {
-    font-weight: bold;
-    color: rgba(215, 182, 255, 1);
+  &.syntax--name {
+    &.syntax--tag {
+      font-weight: bold;
+      color: rgba(215, 182, 255, 1);
+    }
   }
 
-  &.syntax--other.syntax--inherited-class {
-    font-style: italic;
-    color: rgba(255, 151, 73, 1);
+  &.syntax--other {
+    &.syntax--inherited-class {
+      font-style: italic;
+      color: rgba(255, 151, 73, 1);
+    }
   }
 
   &.syntax--function {
@@ -132,8 +158,10 @@ atom-text-editor {
   }
 }
 
-.syntax--storage.syntax--modifier {
-  color: rgba(246, 210, 70, 1);
+.syntax--storage {
+  &.syntax--modifier {
+    color: rgba(246, 210, 70, 1);
+  }
 }
 
 .syntax--support {
@@ -167,9 +195,11 @@ atom-text-editor {
   }
 }
 
-.syntax--text .syntax--source {
-  color: rgba(248, 248, 248, 1);
-  background-color: rgba(177, 179, 186, 0.03);
+.syntax--text {
+  .syntax--source {
+    color: rgba(248, 248, 248, 1);
+    background-color: rgba(177, 179, 186, 0.03);
+  }
 }
 
 .syntax--string {
@@ -181,7 +211,6 @@ atom-text-editor {
   }
 
   &.syntax--quoted {
-
     .syntax--source {
       color: rgba(217, 114, 222, 1);
     }
@@ -198,7 +227,7 @@ atom-text-editor {
         color: rgba(255, 200, 0, 1);
 
         .syntax--section {
-          color: rgba(240, 255, 0, 1);
+          color: rgba(220, 150, 50, 1);
           font-weight: bold;
         }
 
@@ -211,7 +240,7 @@ atom-text-editor {
 
 
     &.syntax--json:not(punctuation) {
-      color: rgba(240, 255, 0, 1);
+      color: rgba(220, 150, 50, 1);
     }
 
     &.syntax--json .syntax--punctuation {
@@ -233,6 +262,44 @@ atom-text-editor {
     }
   }
 
+}
+
+.syntax--dictionary {
+  &.syntax--json {
+
+    .syntax--value {
+      .syntax--constant {
+        color: rgba(255, 20, 147, 1);
+      }
+    }
+
+    .syntax--punctuation {
+      font-weight: bold;
+      color: rgba(41, 73, 255, 1);
+
+      &.syntax--separator {
+        font-weight: bold;
+        color: rgba(255, 20, 0, 1);
+      }
+    }
+
+    &.syntax--definition {
+      &.syntax--punctuation {
+        font-weight: bold;
+        color: rgba(255, 114, 44, 1);
+      }
+    }
+
+    &.syntax--key {
+      .syntax--quoted {
+        color: rgba(140, 140, 140, 1);
+
+        .syntax--punctuation {
+          color: rgba(73, 73, 73, 1);
+        }
+      }
+    }
+  }
 }
 
 .syntax--punctuation {
