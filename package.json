@@ -1,16 +1,19 @@
 {
-  "name": "DrWTheme",
+  "name": "drwtheme-syntax",
   "theme": "syntax",
-  "version": "0.12.0",
+  "version": "0.15.0",
   "private": false,
   "description": "DrWaky's syntax theme for Atom",
   "keywords": [
     "syntax",
-    "theme"
+    "theme",
+    "drwaky",
+    "front-end",
+    "polymer"
   ],
-  "repository": "https://github.com/drwaky/drwtheme",
+  "repository": "https://github.com/drwaky/drwtheme-syntax",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.13.0 <2.0.0"
   }
 }
