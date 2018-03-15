@@ -1,10 +1,10 @@
-# DrW's Atom Syntax Theme
+# DrWaky's syntax theme for Atom
 
-|)|2\/\//-\|<`/
+|)|2\\/\\//-\\|<`/
 
 ## Description
 
-A color syntax theme for atom, focus on the front-end side development, specially on Polymer Web Component library, HTML5, CSS3, JSON and JavaScript.
+A dark syntax theme for Atom, focused on the front-end side development, specially on Polymer Web Component library, HTML5, CSS3, JSON and JavaScript.
 
 ## Installing
 
